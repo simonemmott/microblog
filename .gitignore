@@ -1,0 +1,6 @@
+/logs/
+/venv/
+/app.db
+/.DS_Store
+/.project
+/.pydevproject
