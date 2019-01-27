@@ -85,6 +85,7 @@ class User(UserMixin, db.Model):
     notifications = db.relationship('Notification', 
                                     backref='user',
                                     lazy='dynamic')
+    tasks = db.relationship('Task', backref='user', lazy='dynamic')
 
 
 
@@ -160,8 +161,7 @@ class User(UserMixin, db.Model):
         return Task.query.filter_by(user=self, complete=False).all()
 
     def get_task_in_progress(self, name):
-        return Task.query.filter_by(name=name, user=self,
-                                    complete=False).first()
+        return Task.query.filter_by(name=name, user=self, complete=False).first()
                                     
 
 @login.user_loader
